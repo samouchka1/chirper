@@ -14,7 +14,7 @@ class User extends Authenticatable
 
     public function chirps() //'chirps' method defines 'has many' relationship (eloquent)
     {
-        return $this->hasMany(Chirp::class);
+        return $this->hasMany(Chirp::class); //'has many'
     }
 
     /**

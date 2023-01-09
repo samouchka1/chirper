@@ -17,7 +17,9 @@ class ChirpController extends Controller
     {
         return Inertia::render('Chirps/Index', [ //js component using Inertia
 
-            //
+            //pass Chirps from every user to Index page
+            'chirps' => Chirp::with('user:id,name')->latest()->get(),
+            //'latest' used to return the records in reverse-chronological order
 
         ]);
     }

@@ -14,4 +14,13 @@ class Chirp extends Model
         'message',
 
     ];
+
+    public function user()
+
+    {
+
+        return $this->belongsTo(User::class); 
+        //'belongsTo' = inverse of 'hasMany' on 'User' model
+
+    }
 }
