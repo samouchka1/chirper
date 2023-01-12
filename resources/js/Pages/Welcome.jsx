@@ -1,38 +1,49 @@
 import { Link, Head } from '@inertiajs/inertia-react';
+import {
+    Container,
+    Box
+} from '@mui/material';
+
+const linkStyles = {
+    color: 'gray',
+    textDecoration: 'underline',
+    marginLeft: '1rem'
+}
 
 export default function Welcome(props) {
+
     return (
         <>
             <Head title="Welcome" />
-            <div className="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-                <div className="fixed top-0 right-0 px-6 py-4 sm:block">
+            <Container>
+                <Box sx={{position: 'fixed', top: '0', right: '0'}}>
                     {props.auth.user ? (
-                        <Link href={route('dashboard')} className="text-sm text-gray-700 dark:text-gray-500 underline">
+                        <Link href={route('dashboard')} style={linkStyles}>
                             Dashboard
                         </Link>
                     ) : (
-                        <>
-                            <Link href={route('login')} className="text-sm text-gray-700 dark:text-gray-500 underline">
+                        <Box sx={{p: '1rem'}}>
+                            <Link href={route('login')} style={linkStyles}>
                                 Log in
                             </Link>
 
                             <Link
                                 href={route('register')}
-                                className="ml-4 text-sm text-gray-700 dark:text-gray-500 underline"
+                                style={linkStyles}
                             >
                                 Register
                             </Link>
-                        </>
+                        </Box>
                     )}
-                </div>
-                <div className="p-10 bg-gray-100 dark:bg-gray-900">
-
-                </div>
-                
-                <div className="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                    Laravel v{props.laravelVersion} (PHP v{props.phpVersion})
-                </div>
-            </div>
+                </Box>
+                <Box sx={{margin: '10rem auto', border: 'solid gray 1px'}}>
+                        <Box
+                            component="img"
+                            alt="chirper-icon"
+                            src="{{ asset('images/chirper-icon.png') }}" 
+                        />
+                </Box>
+            </Container>
         </>
     );
 }
