@@ -1,13 +1,18 @@
 import { Link, Head } from '@inertiajs/inertia-react';
 import {
     Container,
-    Box
+    Box,
+    Typography,
 } from '@mui/material';
 
 const linkStyles = {
     color: 'gray',
     textDecoration: 'underline',
     marginLeft: '1rem'
+}
+const linkAreaStyles = {
+    p: '1rem', 
+    textAlign: 'center'
 }
 
 export default function Welcome(props) {
@@ -16,13 +21,24 @@ export default function Welcome(props) {
         <>
             <Head title="Welcome" />
             <Container>
-                <Box sx={{position: 'fixed', top: '0', right: '0'}}>
+                <Box sx={{margin: '10rem auto 1rem'}}>
+                    <Typography variant="h4" sx={{textAlign: 'center'}}>Chirper</Typography>
+                    <Box
+                        component="img"
+                        alt="chirper-icon"
+                        src="../images/chirper-icon.png" //use this method of file path. vite does the work.
+                        sx={{margin: '1rem auto'}}
+                    />
+                </Box>
+                <Box sx={{margin: '1rem auto'}}>
                     {props.auth.user ? (
-                        <Link href={route('dashboard')} style={linkStyles}>
-                            Dashboard
-                        </Link>
+                        <Box sx={linkAreaStyles}>
+                            <Link href={route('dashboard')} style={linkStyles}>
+                                Dashboard
+                            </Link>
+                        </Box>
                     ) : (
-                        <Box sx={{p: '1rem'}}>
+                        <Box sx={linkAreaStyles}>
                             <Link href={route('login')} style={linkStyles}>
                                 Log in
                             </Link>
@@ -35,13 +51,6 @@ export default function Welcome(props) {
                             </Link>
                         </Box>
                     )}
-                </Box>
-                <Box sx={{margin: '10rem auto', border: 'solid gray 1px'}}>
-                        <Box
-                            component="img"
-                            alt="chirper-icon"
-                            src="{{ asset('images/chirper-icon.png') }}" 
-                        />
                 </Box>
             </Container>
         </>
