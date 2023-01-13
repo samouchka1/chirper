@@ -19,10 +19,10 @@ export default function Welcome(props) {
 
     return (
         <>
-            <Head title="Welcome" />
+            <Head title="Chirper - Home" />
             <Container>
                 <Box sx={{margin: '10rem auto 1rem'}}>
-                    <Typography variant="h4" sx={{textAlign: 'center'}}>Chirper</Typography>
+                    <Typography variant="h4" sx={{caretColor: 'transparent', textAlign: 'center', fontFamily: 'Nunito'}}>Chirper</Typography>
                     <Box
                         component="img"
                         alt="chirper-icon"

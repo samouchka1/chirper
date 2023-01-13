@@ -101,6 +101,7 @@ export default function Authenticated({ auth, header, children }) {
                 </div>
 
                 <div className={(showingNavigationDropdown ? 'block' : 'hidden') + ' sm:hidden'}>
+
                     <div className="pt-2 pb-3 space-y-1" /*mobile navivation */>
                         <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
                             Dashboard
