@@ -20,11 +20,8 @@ class Chirp extends Model
     //Now any time a new Chirp is created, the ChirpCreated event will be dispatched.
 
     public function user()
-
     {
-
         return $this->belongsTo(User::class); 
         //'belongsTo' = inverse of 'hasMany' on 'User' model
-
     }
 }
