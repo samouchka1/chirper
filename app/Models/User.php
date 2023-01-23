@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
@@ -15,6 +16,11 @@ class User extends Authenticatable
     public function chirps() //'chirps' method defines 'has many' relationship (eloquent)
     {
         return $this->hasMany(Chirp::class); //'has many'
+    }
+
+    public function setAvatarAttribute($avatar)
+    {
+        $this->attributes['avatar'] = Storage::putFile('public/avatars', $avatar);
     }
 
     /**
